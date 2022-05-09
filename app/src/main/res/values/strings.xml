@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">FastFoo</string>
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Contraseña</string>
+    <string name="login_loginButton">Ingresar</string>
+    <string name="login_noAccount">¿No tienes cuenta?</string>
+    <string name="login_recoverAccount">¿Olvidaste tu contraseña?</string>
+    <string name="img_logo_description">Imagen de logo de FastFoo</string>
+    <string name="register_email_hint">Escribe tu email</string>
+    <string name="register_password_hint">Escribe tu contraseña</string>
+    <string name="register_passwordRepeat_hint">Confirma tu contraseña</string>
+    <string name="register_houseDirection_hint">Escribe la dirección de tu casa</string>
+    <string name="register_registerButton">Registrar</string>
+    <string name="register_backButton_description">Botón de regress de registro</string>
+    <string name="register_state_hint">¿En cuál estado vive?</string>
+    <string name="dialog_okDialog_cancelButton">Cancelar</string>
+    <string name="dialog_okDialog_acceptButton">Ok</string>
+    <string name="none"></string>
+    <string name="dialog_reocervEmail_text">Escribe tu dirección email para enviarte un correo de recuperación de contraseña:</string>
+    <string name="main_navigation_home">Inicio</string>
+    <string name="main_navigation_favoritos">Favoritos</string>
+    <string name="main_navigation_carrito">Carrito</string>
+    <string name="main_navigation_maps">Mapas</string>
+    <string name="main_navigation_profile">Perfil</string>
+    <string name="recyclerview_restaurant_grid_image">Restaurant image</string>
+    <string name="recyclerview_restaurant_grid_title">Title</string>
+    <string name="recyclerview_restaurant_grid_ubication">Ubicación</string>
+    <string name="fragment_main_home_recycler_restaurants_title">Los restaurante más recientes en tu ciudad</string>
+    <string name="fragment_main_home_recycler_carrito_fab_title">PAGAR</string>
+
+</resources>

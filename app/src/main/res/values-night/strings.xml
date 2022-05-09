@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Contraseña</string>
+    <string name="login_loginButton">Ingresar</string>
+    <string name="login_noAccount">¿No tienes cuenta?</string>
+    <string name="login_recoverAccount">¿Olvidaste tu contraseña?</string>
+    <string name="img_logo_description">Imagen de logo de FastFoo</string>
+    <string name="register_email_hint">Escribe tu email</string>
+    <string name="register_password_hint">Escribe tu contraseña</string>
+    <string name="register_houseDirection_hint">Escribe la dirección de tu casa</string>
+    <string name="register_state_hint">¿En cuál estado vive?</string>
+    <string name="dialog_okDialog_acceptButton">Ok</string>
+</resources>

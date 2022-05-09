@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/dialog_inputText_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="16dp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dialog_inputText_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/none"
+            style ="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/dialog_inputText_cancelButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dialog_okDialog_cancelButton"
+                android:backgroundTint="?attr/colorSecondary"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="8dp"/>
+
+            <Button
+                android:id="@+id/dialog_inputText_acceptButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dialog_okDialog_acceptButton"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="8dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>
