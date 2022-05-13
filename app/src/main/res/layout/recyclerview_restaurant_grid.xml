@@ -17,8 +17,7 @@
         <ImageView
             android:id="@+id/recyclerview_restaurant_grid_image"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxHeight="200dp"
+            android:layout_height="200dp"
             android:scaleType="centerCrop"
             android:contentDescription="@string/recyclerview_restaurant_grid_image"
             />
@@ -39,8 +38,11 @@
                 <TextView
                     android:id="@+id/recyclerview_restaurant_grid_title"
                     android:layout_width="wrap_content"
+                    android:maxWidth="150dp"
                     android:layout_height="match_parent"
                     android:text="@string/recyclerview_restaurant_grid_title"
+                    android:ellipsize="none"
+                    android:scrollHorizontally="false"
                     android:textAppearance="?attr/textAppearanceHeadline6"
                     android:textColor="?attr/colorOnPrimary"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -52,13 +54,14 @@
                     android:id="@+id/recyclerview_restaurant_grid_like"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_favorite_24"
                     android:backgroundTint="@android:color/transparent"
                     android:contentDescription="@string/none"
-                    app:tint="?attr/colorOnPrimary"
+                    android:minHeight="48dp"
+                    android:src="@drawable/ic_baseline_favorite_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:tint="?attr/colorOnPrimary" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -67,7 +70,8 @@
                 android:id="@+id/recyclerview_restaurant_grid_ubication"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/recyclerview_restaurant_grid_ubication"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="?attr/colorOnPrimary"

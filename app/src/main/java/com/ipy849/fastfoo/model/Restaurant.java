@@ -1,13 +1,14 @@
 package com.ipy849.fastfoo.model;
 
+import java.net.URI;
 import java.net.URL;
 
 public class Restaurant {
     private boolean liked;
     private String ubication, title;
-    private URL image;
+    private URI image;
 
-    public Restaurant(boolean liked, String ubication, String title, URL image) {
+    public Restaurant(boolean liked, String ubication, String title, URI image) {
         this.liked = liked;
         this.ubication = ubication;
         this.title = title;
@@ -38,11 +39,11 @@ public class Restaurant {
         this.title = title;
     }
 
-    public URL getImage() {
+    public URI getImage() {
         return image;
     }
 
-    public void setImage(URL image) {
+    public void setImage(URI image) {
         this.image = image;
     }
 }

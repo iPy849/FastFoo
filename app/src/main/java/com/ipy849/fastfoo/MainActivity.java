@@ -2,10 +2,9 @@ package com.ipy849.fastfoo;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -13,7 +12,11 @@ import android.widget.FrameLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.ipy849.fastfoo.fragments.main.MainCarritoFragment;
+import com.ipy849.fastfoo.fragments.main.MainFavoritoFragment;
 import com.ipy849.fastfoo.fragments.main.MainHomeFragment;
+import com.ipy849.fastfoo.fragments.main.MainMapaFragment;
+import com.ipy849.fastfoo.fragments.main.MainProfileFragment;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener {
@@ -52,22 +55,28 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
 
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Fragment fragmentClass = null;
+        Class fragmentClass;
         switch(item.getItemId()){
             case R.id.main_navigation_home:
+                fragmentClass = MainHomeFragment.class;
                 break;
             case R.id.main_navigation_favoritos:
+                fragmentClass = MainFavoritoFragment.class;
                 break;
             case R.id.main_navigation_carrito:
+                fragmentClass = MainCarritoFragment.class;
                 break;
             case R.id.main_navigation_maps:
+                fragmentClass = MainMapaFragment.class;
                 break;
             case R.id.main_navigation_profile:
+                fragmentClass = MainProfileFragment.class;
                 break;
             default:
-                break;
+                return false;
         }
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
