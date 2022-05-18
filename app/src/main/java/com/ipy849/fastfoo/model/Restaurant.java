@@ -6,14 +6,9 @@ import java.net.URL;
 public class Restaurant {
     private boolean liked;
     private String ubication, title;
-    private URI image;
+    private String imageUrl;
+    private Product[] products;
 
-    public Restaurant(boolean liked, String ubication, String title, URI image) {
-        this.liked = liked;
-        this.ubication = ubication;
-        this.title = title;
-        this.image = image;
-    }
 
     public boolean isLiked() {
         return liked;
@@ -39,11 +34,19 @@ public class Restaurant {
         this.title = title;
     }
 
-    public URI getImage() {
-        return image;
+    public String getImage() {
+        return imageUrl;
     }
 
-    public void setImage(URI image) {
-        this.image = image;
+    public void setImage(String image) {
+        this.imageUrl = image;
+    }
+
+    public Product[] getProducts() {
+        return products;
+    }
+
+    public void setProducts(Product[] products) {
+        this.products = products;
     }
 }

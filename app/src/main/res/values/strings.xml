@@ -28,5 +28,9 @@
     <string name="fragment_main_home_recycler_restaurants_title">Los restaurante más recientes en tu ciudad</string>
     <string name="fragment_main_home_recycler_carrito_fab_title">PAGAR</string>
     <string name="recyclerview_carrito_eliminar">Eliminar</string>
+    <string name="dialog_inputText_input_new_password">Llene este formulario para proceder a cambiar la contraseña de su cuenta de FastFoo</string>
+    <string name="dialog_inputText_input_new_password_hint">Ingrese su nueva contraseña</string>
+    <string name="dialog_inputText_input_new_password_repeat_hint">Reingrese su nueva contraseña</string>
+    <string name="dialog_inputText_acceptButton_change_password">Cambiar</string>
 
 </resources>

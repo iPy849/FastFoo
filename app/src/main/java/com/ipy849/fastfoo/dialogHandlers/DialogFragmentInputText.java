@@ -49,7 +49,7 @@ public class DialogFragmentInputText extends DialogFragment {
 
         // AcceptButton
         ((Button) rootView.findViewById(R.id.dialog_inputText_acceptButton)).setText(accepButtontText);
-        rootView.findViewById(R.id.dialog_inputText_acceptButton).setOnClickListener(view2 -> handler.handle(getContext(), rootView));
+        rootView.findViewById(R.id.dialog_inputText_acceptButton).setOnClickListener(view2 -> handler.handle(getContext(), rootView, this));
     }
 
 }

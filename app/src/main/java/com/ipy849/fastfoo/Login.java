@@ -23,7 +23,7 @@ public class Login extends AppCompatActivity {
         super.onStart();
 
         // Registrar nuevo usuario
-        findViewById(R.id.login_createAccount).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.login_loginCreateAccount).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Register.class);
@@ -37,7 +37,7 @@ public class Login extends AppCompatActivity {
                 "Enviar",
                 new IDialogHandler() {
                     @Override
-                    public void handle(Context context, View view) {
+                    public void handle(Context context, View view, Object caller) {
                         // TODO: Aquí va la lógica de enviar correo
                     }
                 }).show(getSupportFragmentManager(), DialogFragmentInputText.TAG));

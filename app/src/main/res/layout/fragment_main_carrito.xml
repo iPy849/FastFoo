@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/fragment_main_home_recycler_carrito"
+            android:id="@+id/fragment_main_map_recycler_map_legend"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </androidx.recyclerview.widget.RecyclerView>
@@ -27,9 +27,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:contentDescription="@string/none"
+        android:backgroundTint="?attr/colorPrimary"
         android:text="@string/fragment_main_home_recycler_carrito_fab_title"
         app:icon="@drawable/ic_baseline_attach_money_24"
-        app:iconTint="?attr/colorOnPrimary"
+        app:iconTint="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

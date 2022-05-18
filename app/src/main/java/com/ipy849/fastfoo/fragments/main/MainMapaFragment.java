@@ -1,5 +1,6 @@
 package com.ipy849.fastfoo.fragments.main;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,13 +8,30 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMapOptions;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.ipy849.fastfoo.BuildConfig;
+import com.ipy849.fastfoo.MainActivity;
 import com.ipy849.fastfoo.R;
+import com.ipy849.fastfoo.adapters.CarritoAdapter;
+import com.ipy849.fastfoo.model.Product;
 
-public class MainMapaFragment extends Fragment {
+public class MainMapaFragment extends Fragment implements OnMapReadyCallback {
 
     View rootView;
+    MainActivity activity;
+    private GoogleMap map;
+    RecyclerView recyclerView;
 
     @Nullable
     @Override
@@ -21,5 +39,63 @@ public class MainMapaFragment extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         rootView = inflater.inflate(R.layout.fragment_main_mapa, container, false);
         return rootView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.fragment_main_map_map);
+        if (mapFragment != null)
+            mapFragment.getMapAsync(this);
+
+
+        recyclerView = rootView.findViewById(R.id.fragment_main_map_recycler_map_legend);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(new CarritoAdapter(GenerateProducts()));
+
+    }
+
+
+    public Product[] GenerateProducts() {
+        Product[] products = new Product[3];
+        products[0] = new Product();
+        products[0].setPrice(200);
+        products[0].setName(BuildConfig.MAPS_API_KEY);
+        products[0].setDescription("Pizza de queso extra");
+
+        products[1] = new Product();
+        products[1].setPrice(250);
+        products[1].setName("Pizza media");
+        products[1].setDescription("Pizza con peperoni");
+
+        products[2] = new Product();
+        products[2].setPrice(300);
+        products[2].setName("Pizza rica");
+        products[2].setDescription("Pizza hawaiana");
+        return products;
+    }
+
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+        map = googleMap;
+        LatLng cancun = new LatLng(21.1619, -86.8515);
+        map.addMarker(new MarkerOptions()
+                .position(cancun)
+                .title("Aquí está Cancún"));
+        map.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+        map.moveCamera(CameraUpdateFactory.zoomBy(5));
+        map.moveCamera(CameraUpdateFactory.newLatLng(cancun));
+        map.setTrafficEnabled(true);
+    }
+
+    // Al enlazar el fragment
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if(context instanceof MainActivity){
+            activity = (MainActivity) context;
+        }
     }
 }

@@ -17,7 +17,7 @@
         <ImageView
             android:id="@+id/recyclerview_restaurant_grid_image"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:scaleType="centerCrop"
             android:contentDescription="@string/recyclerview_restaurant_grid_image"
             />
@@ -57,11 +57,9 @@
                     android:backgroundTint="@android:color/transparent"
                     android:contentDescription="@string/none"
                     android:minHeight="48dp"
-                    android:src="@drawable/ic_baseline_favorite_24"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:tint="?attr/colorOnPrimary" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
