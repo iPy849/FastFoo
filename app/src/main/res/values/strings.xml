@@ -32,5 +32,26 @@
     <string name="dialog_inputText_input_new_password_hint">Ingrese su nueva contraseña</string>
     <string name="dialog_inputText_input_new_password_repeat_hint">Reingrese su nueva contraseña</string>
     <string name="dialog_inputText_acceptButton_change_password">Cambiar</string>
+    <string name="mail_recovery_sucess">Se ha enviado el correo de recuperación</string>
+    <string name="mail_recovery_error">No tenemos registrado este correo</string>
+    <string name="ok">Ok</string>
+    <string name="login_failure">El nombre de usuario o contraseña son incorrectos</string>
+    <string name="register_payment_method">Escriba su método de pago</string>
+    <string name="register_name">Escribe tu nombre</string>
+    <string name="fragment_main_profile_change_payment_method_text">Cambiar método de pago</string>
+    <string name="fragment_main_profile_change_address_text">cambiar dirección</string>
+    <string name="fragment_main_profile_change_password_text">cambiar contraseña</string>
+    <string name="fragment_main_profile_logout_text">cerrar sesión</string>
+    <string name="fragment_main_profile_change_state_button_text">Cambiar estado</string>
+    <string name="title_activity_shop_detail">ShopDetail</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="recyclerview_shop_agregar_test">Agregar</string>
 
 </resources>

@@ -10,17 +10,21 @@
         <entry key="app/src/main/res/layout-v21/fragmentdialog_input_new_password.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22292022705078118" />
-        <entry key="app/src/main/res/layout/activity_register.xml" value="0.12945709228515628" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_shop_detail.xml" value="0.33909759521484384" />
         <entry key="app/src/main/res/layout/fragment_main_carrito.xml" value="0.1890930175781249" />
         <entry key="app/src/main/res/layout/fragment_main_favorite.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_main_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_main_mapa.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_main_profile.xml" value="0.1919191919191919" />
+        <entry key="app/src/main/res/layout/fragmentdialog_confirmation.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragmentdialog_input_new_password.xml" value="0.284375" />
-        <entry key="app/src/main/res/layout/fragmentdialog_inputtext.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragmentdialog_inputselection.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragmentdialog_inputtext.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragmentdialog_okdialog.xml" value="0.2790756225585938" />
         <entry key="app/src/main/res/layout/recyclerview_carrito_items.xml" value="0.13182373046875" />
         <entry key="app/src/main/res/layout/recyclerview_restaurant_grid.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/recyclerview_shop_items.xml" value="0.1" />
       </map>
     </option>
   </component>

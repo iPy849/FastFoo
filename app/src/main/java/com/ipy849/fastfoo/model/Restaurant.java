@@ -1,13 +1,19 @@
 package com.ipy849.fastfoo.model;
 
+import android.widget.ArrayAdapter;
+
+import com.ipy849.fastfoo.AppSession;
+
 import java.net.URI;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Restaurant {
-    private boolean liked;
-    private String ubication, title;
+    private boolean liked = false;
+    private String ubication, name;
     private String imageUrl;
-    private Product[] products;
+    private ArrayList<Product> productos;
 
 
     public boolean isLiked() {
@@ -26,12 +32,12 @@ public class Restaurant {
         this.ubication = ubication;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String title) {
+        this.name = title;
     }
 
     public String getImage() {
@@ -42,11 +48,30 @@ public class Restaurant {
         this.imageUrl = image;
     }
 
-    public Product[] getProducts() {
-        return products;
+    public ArrayList<Product> getProductos() {
+        if(productos == null)
+            productos = new ArrayList<>();
+        return productos;
     }
 
-    public void setProducts(Product[] products) {
-        this.products = products;
+    public void setProductos(ArrayList<Product> products) {
+        this.productos = products;
+    }
+
+    public Restaurant(){};
+
+    public Restaurant(HashMap<String, Object> data){
+        setName((String) data.get("name"));
+        setUbication((String) data.get("ubication"));
+        setImage((String) data.get("image"));
+        setLiked(AppSession.user.isFavorite(this));
+        productos = new ArrayList<>();
+        for (HashMap<String, Object> productData: ((ArrayList<HashMap>) data.get("productos"))) {
+            Product product = new Product();
+            product.setName((String) productData.get("name"));
+            product.setImage((String) productData.get("image"));
+            product.setPrice( ((Long) productData.get("price")).intValue() );
+            productos.add(product);
+        }
     }
 }

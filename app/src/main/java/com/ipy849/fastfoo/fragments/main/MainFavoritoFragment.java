@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ipy849.fastfoo.AppSession;
 import com.ipy849.fastfoo.R;
 import com.ipy849.fastfoo.adapters.RestaurantAdapter;
 import com.ipy849.fastfoo.model.Restaurant;
@@ -37,41 +38,11 @@ public class MainFavoritoFragment extends Fragment {
         recyclerView = rootView.findViewById(R.id.fragment_main_home_recycler_favorite_restaurants);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
         recyclerView.setLayoutManager(gridLayoutManager);
-        recyclerView.setAdapter(new RestaurantAdapter(GenerateRestaurants()));
     }
 
-    public ArrayList<Restaurant> GenerateRestaurants() {
-        ArrayList<Restaurant> restaurants = new ArrayList<>();
-
-        Restaurant a = new Restaurant();
-        a.setImage("https://www.elfinanciero.com.mx/resizer/20pV8H7W2orWcNWSlGDsiKnHREk=/400x225/filters:format(jpg):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/EMLSMCUMWFFAXO4ZS6VL3XYERE.jpg");
-        a.setLiked(true);
-        a.setTitle("Tacos en la calle");
-        a.setUbication("Avenida yachxilan");
-
-        Restaurant c = new Restaurant();
-        c.setImage("https://github.com/bumptech/glide/raw/master/static/glide_logo.png");
-        c.setLiked(true);
-        c.setTitle("Tacos en la calle");
-        c.setUbication("Avenida yachxilan");
-
-        Restaurant d = new Restaurant();
-        d.setImage("https://www.elfinanciero.com.mx/resizer/20pV8H7W2orWcNWSlGDsiKnHREk=/400x225/filters:format(jpg):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/EMLSMCUMWFFAXO4ZS6VL3XYERE.jpg");
-        d.setLiked(true);
-        d.setTitle("Tacos en la calle");
-        d.setUbication("Avenida yachxilan");
-
-
-        Restaurant f = new Restaurant();
-        f.setImage("https://github.com/bumptech/glide/raw/master/static/glide_logo.png");
-        f.setLiked(true);
-        f.setTitle("Tacos en la calle");
-        f.setUbication("Avenida yachxilan");
-
-        restaurants.add(a);
-        restaurants.add(c);
-        restaurants.add(d);
-        restaurants.add(f);
-        return restaurants;
+    @Override
+    public void onResume() {
+        super.onResume();
+        recyclerView.setAdapter(new RestaurantAdapter(AppSession.user.getFavoriteRestaurant()));
     }
 }

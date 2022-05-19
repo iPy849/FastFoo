@@ -12,19 +12,18 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import com.ipy849.fastfoo.R;
-import com.ipy849.fastfoo.dialogHandlers.IDialogHandler;
 
 public class DialogFragmentTextOk extends DialogFragment {
+
+    public static String TAG = "DialogFragmentTextOk";
 
     protected View rootView;
     protected String text;
     protected String accepButtontText;
-    protected IDialogHandler handler;
 
-    public DialogFragmentTextOk(String text, String accepButtontText, IDialogHandler handler){
+    public DialogFragmentTextOk(String text, String accepButtontText){
         this.accepButtontText = accepButtontText;
         this.text = text;
-        this.handler = handler;
     }
 
     @Nullable
@@ -39,15 +38,12 @@ public class DialogFragmentTextOk extends DialogFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Close button
-        rootView.findViewById(R.id.dialog_okDialog_cancelButton).setOnClickListener(view1 -> dismiss());
-
         // Text
         ((TextView) rootView.findViewById(R.id.dialog_okDialog_text)).setText(text);
 
         // AcceptButton
         ((Button) rootView.findViewById(R.id.dialog_okDialog_acceptButton)).setText(accepButtontText);
-        rootView.findViewById(R.id.dialog_okDialog_acceptButton).setOnClickListener(view2 -> handler.handle(getContext(), rootView, this));
+        rootView.findViewById(R.id.dialog_okDialog_acceptButton).setOnClickListener(view2 -> dismiss());
     }
 
 }

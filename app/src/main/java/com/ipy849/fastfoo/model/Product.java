@@ -2,7 +2,7 @@ package com.ipy849.fastfoo.model;
 
 public class Product {
 
-    private String name, description;
+    private String name, image;
     private float price;
 
     public String getName() {
@@ -13,19 +13,19 @@ public class Product {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public float getPrice() {
         return price;
     }
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

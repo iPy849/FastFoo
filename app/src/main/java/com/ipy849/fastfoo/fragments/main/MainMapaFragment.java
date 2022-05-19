@@ -53,28 +53,8 @@ public class MainMapaFragment extends Fragment implements OnMapReadyCallback {
         recyclerView = rootView.findViewById(R.id.fragment_main_map_recycler_map_legend);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(new CarritoAdapter(GenerateProducts()));
+        //recyclerView.setAdapter(new CarritoAdapter(GenerateProducts()));
 
-    }
-
-
-    public Product[] GenerateProducts() {
-        Product[] products = new Product[3];
-        products[0] = new Product();
-        products[0].setPrice(200);
-        products[0].setName(BuildConfig.MAPS_API_KEY);
-        products[0].setDescription("Pizza de queso extra");
-
-        products[1] = new Product();
-        products[1].setPrice(250);
-        products[1].setName("Pizza media");
-        products[1].setDescription("Pizza con peperoni");
-
-        products[2] = new Product();
-        products[2].setPrice(300);
-        products[2].setName("Pizza rica");
-        products[2].setDescription("Pizza hawaiana");
-        return products;
     }
 
     @Override

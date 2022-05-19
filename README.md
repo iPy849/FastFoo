@@ -1,0 +1,2 @@
+# Documento del proyecto:
+Para entrar al [documento](https://docs.google.com/document/d/1KJrQGC5aQ0GLOC7NJI_lsWPhrcFGl1fZeUJDJ-BUvjA/edit?usp=sharing) use este enlace: https://docs.google.com/document/d/1KJrQGC5aQ0GLOC7NJI_lsWPhrcFGl1fZeUJDJ-BUvjA/edit?usp=sharing

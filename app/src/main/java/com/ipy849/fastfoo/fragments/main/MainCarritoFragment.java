@@ -1,6 +1,9 @@
 package com.ipy849.fastfoo.fragments.main;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,15 +14,21 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.ipy849.fastfoo.AppSession;
 import com.ipy849.fastfoo.BuildConfig;
+import com.ipy849.fastfoo.MainActivity;
 import com.ipy849.fastfoo.R;
 import com.ipy849.fastfoo.adapters.CarritoAdapter;
+import com.ipy849.fastfoo.dialogHandlers.DialogFragmentConfirmationText;
 import com.ipy849.fastfoo.model.Product;
 
 public class MainCarritoFragment extends Fragment {
 
     View rootView;
     RecyclerView recyclerView;
+    MainActivity caller;
+
 
     @Nullable
     @Override
@@ -32,28 +41,34 @@ public class MainCarritoFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         recyclerView = rootView.findViewById(R.id.fragment_main_map_recycler_map_legend);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(new CarritoAdapter(GenerateProducts()));
     }
 
-    public Product[] GenerateProducts() {
-        Product[] products = new Product[3];
-        products[0] = new Product();
-        products[0].setPrice(200);
-        products[0].setName(BuildConfig.MAPS_API_KEY);
-        products[0].setDescription("Pizza de queso extra");
+    @Override
+    public void onResume() {
+        super.onResume();
+        recyclerView.setAdapter(new CarritoAdapter(AppSession.user.getCart()));
 
-        products[1] = new Product();
-        products[1].setPrice(250);
-        products[1].setName("Pizza media");
-        products[1].setDescription("Pizza con peperoni");
+        (rootView.findViewById(R.id.fragment_main_home_recycler_carrito_fab_title)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                float total = 0;
+                for (Product product: AppSession.user.getCart()) {
+                    total += product.getPrice();
+                }
+                new DialogFragmentConfirmationText(String.format("Se va a pagar el monto de %.2f pesos. Desea pagarlos?", total), "Pagar", caller).show(getParentFragmentManager(), DialogFragmentConfirmationText.TAG);
+            }
+        });
+    }
 
-        products[2] = new Product();
-        products[2].setPrice(300);
-        products[2].setName("Pizza rica");
-        products[2].setDescription("Pizza hawaiana");
-        return products;
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context != null) {
+            caller = (MainActivity) context;
+        }
     }
 }

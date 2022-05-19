@@ -19,4 +19,10 @@
     <style name="Theme.FastFoo.TextButton" parent="@style/Widget.MaterialComponents.Button.TextButton">
         <item name="android:textColor">?attr/colorSecondary</item>
     </style>
+    <style name="Theme.FastFoo.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.FastFoo.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.FastFoo.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

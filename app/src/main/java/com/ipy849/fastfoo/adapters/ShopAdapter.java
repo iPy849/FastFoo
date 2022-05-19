@@ -15,24 +15,24 @@ import com.ipy849.fastfoo.model.Product;
 
 import java.util.ArrayList;
 
-public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.CarritoHolder> {
+public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ShopHolder> {
 
     private View view;
     protected ArrayList<Product> products;
 
-    public CarritoAdapter(ArrayList<Product> products){
+    public ShopAdapter(ArrayList<Product> products){
         this.products = products;
     }
 
     @NonNull
     @Override
-    public CarritoHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_carrito_items, parent, false);
-        return new CarritoHolder(view);
+    public ShopHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_shop_items, parent, false);
+        return new ShopHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CarritoHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ShopHolder holder, int position) {
         holder.updateCarritoView(products.get(position));
     }
 
@@ -41,27 +41,26 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.CarritoH
         return products.size();
     }
 
-    public static class CarritoHolder extends  RecyclerView.ViewHolder{
+    public static class ShopHolder extends RecyclerView.ViewHolder{
         TextView itemName;
         Button deleteItemButton;
         Product product;
 
-        public CarritoHolder(@NonNull View itemView) {
+        public ShopHolder(@NonNull View itemView) {
             super(itemView);
-            itemName = itemView.findViewById(R.id.recyclerview_carrito_text);
-            deleteItemButton = itemView.findViewById(R.id.recyclerview_carrito_eliminar);
+            itemName = itemView.findViewById(R.id.recyclerview_shop_text);
+            deleteItemButton = itemView.findViewById(R.id.recyclerview_shop_agregar);
         }
 
         public void updateCarritoView(Product product){
             this.product = product;
             itemName.setText(String.format("%.2f - %s", product.getPrice(), product.getName()));
-            deleteItemButton.setOnClickListener(view -> deleteButtonHandler(view));
+            deleteItemButton.setOnClickListener(view -> agregarButtonHandler(view));
         }
 
-        private void deleteButtonHandler(View view ){
-            AppSession.user.removeProduct2Cart(product);
+        private void agregarButtonHandler(View view ){
+            AppSession.user.addProduct2Cart(product);
             AppSession.user.save(view.getContext());
-            view.setVisibility(View.GONE);
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.ipy849.fastfoo.fragments.main;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +12,21 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.ipy849.fastfoo.AppSession;
 import com.ipy849.fastfoo.R;
 import com.ipy849.fastfoo.adapters.RestaurantAdapter;
+import com.ipy849.fastfoo.model.Product;
 import com.ipy849.fastfoo.model.Restaurant;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MainHomeFragment extends Fragment {
 
@@ -39,54 +48,26 @@ public class MainHomeFragment extends Fragment {
         recyclerView = rootView.findViewById(R.id.fragment_main_home_recycler_restaurants);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
         recyclerView.setLayoutManager(gridLayoutManager);
-        recyclerView.setAdapter(new RestaurantAdapter(GenerateRestaurants()));
     }
 
-    public ArrayList<Restaurant> GenerateRestaurants() {
-        ArrayList<Restaurant> restaurants = new ArrayList<>();
+    @Override
+    public void onResume() {
+        super.onResume();
 
-        Restaurant a = new Restaurant();
-        a.setImage("https://www.elfinanciero.com.mx/resizer/20pV8H7W2orWcNWSlGDsiKnHREk=/400x225/filters:format(jpg):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/EMLSMCUMWFFAXO4ZS6VL3XYERE.jpg");
-        a.setLiked(true);
-        a.setTitle("Tacos en la calle");
-        a.setUbication("Avenida yachxilan");
+        // Traer restaurantes de la base de datos
+        DatabaseReference fbDatabaseRef = FirebaseDatabase.getInstance().getReference();
+        fbDatabaseRef.child("restaurants").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                ArrayList<HashMap> restaurantsData = ((ArrayList) task.getResult().getValue());
+                ArrayList<Restaurant> restaurants = new ArrayList<>();
+                for (HashMap<String, Object> restaurantMap: restaurantsData) {
+                    Restaurant restaurant = new Restaurant(restaurantMap);
+                    restaurants.add(restaurant);
+                }
 
-        Restaurant b = new Restaurant();
-        b.setImage("https://image.shutterstock.com/image-photo/mcdonalds-logo-has-branches-around-260nw-1629323827.jpg");
-        b.setLiked(false);
-        b.setTitle("Macdonalds");
-        b.setUbication("Avenida Nichupté");
-
-        Restaurant c = new Restaurant();
-        c.setImage("https://github.com/bumptech/glide/raw/master/static/glide_logo.png");
-        c.setLiked(true);
-        c.setTitle("Tacos en la calle");
-        c.setUbication("Avenida yachxilan");
-
-        Restaurant d = new Restaurant();
-        d.setImage("https://www.elfinanciero.com.mx/resizer/20pV8H7W2orWcNWSlGDsiKnHREk=/400x225/filters:format(jpg):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/EMLSMCUMWFFAXO4ZS6VL3XYERE.jpg");
-        d.setLiked(true);
-        d.setTitle("Tacos en la calle");
-        d.setUbication("Avenida yachxilan");
-
-        Restaurant e = new Restaurant();
-        e.setImage("https://image.shutterstock.com/image-photo/mcdonalds-logo-has-branches-around-260nw-1629323827.jpg");
-        e.setLiked(false);
-        e.setTitle("Macdonalds");
-        e.setUbication("Avenida Nichupté");
-
-        Restaurant f = new Restaurant();
-        f.setImage("https://github.com/bumptech/glide/raw/master/static/glide_logo.png");
-        f.setLiked(true);
-        f.setTitle("Tacos en la calle");
-        f.setUbication("Avenida yachxilan");
-
-        restaurants.add(a);
-        restaurants.add(b);
-        restaurants.add(c);
-        restaurants.add(d);
-        restaurants.add(e);
-        restaurants.add(f);
-        return restaurants;
+                recyclerView.setAdapter(new RestaurantAdapter(restaurants));
+            }
+        });
     }
 }

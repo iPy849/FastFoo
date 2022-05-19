@@ -12,21 +12,18 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import com.ipy849.fastfoo.R;
-import com.ipy849.fastfoo.dialogHandlers.IDialogHandler;
 
-public class DialogFragmentInputText extends DialogFragment {
+public abstract class BaseDialogFragmentInputText extends DialogFragment {
 
     public static String TAG = "DialogFragmentInputText";
 
     protected View rootView;
     protected String text;
-    protected String accepButtontText;
-    protected IDialogHandler handler;
+    protected String acceptButtontText;
 
-    public DialogFragmentInputText(String text, String accepButtontText, IDialogHandler handler){
-        this.accepButtontText = accepButtontText;
+    public BaseDialogFragmentInputText(String text, String acceptButtontText){
+        this.acceptButtontText = acceptButtontText;
         this.text = text;
-        this.handler = handler;
     }
 
     @Nullable
@@ -48,8 +45,10 @@ public class DialogFragmentInputText extends DialogFragment {
         ((TextView) rootView.findViewById(R.id.dialog_inputText_text)).setText(text);
 
         // AcceptButton
-        ((Button) rootView.findViewById(R.id.dialog_inputText_acceptButton)).setText(accepButtontText);
-        rootView.findViewById(R.id.dialog_inputText_acceptButton).setOnClickListener(view2 -> handler.handle(getContext(), rootView, this));
+        ((Button) rootView.findViewById(R.id.dialog_inputText_acceptButton)).setText(acceptButtontText);
+        rootView.findViewById(R.id.dialog_inputText_acceptButton).setOnClickListener(view2 -> handle());
     }
+
+    protected abstract void handle();
 
 }
